@@ -50,8 +50,8 @@ if uploaded_file is not None:
                 
                 mol_neutral = Chem.MolFromSmiles(selected_neutral)
                 if mol_neutral:
-                    svg_neutral = Draw.MolToSVG(mol_neutral, size=(400, 400))
-                    st.image(svg_neutral, use_column_width='always')
+                    svg_neutral = Draw.MolToSVG(mol_neutral, width=400, height=400)
+                    st.image(svg_neutral, use_container_width=True)
                 else:
                     st.warning("Could not generate image for this neutral SMILES.")
 
@@ -73,10 +73,10 @@ if uploaded_file is not None:
                             
                             svg_prot = Draw.MolToSVG(
                                 mol_prot, 
-                                size=(400, 400), 
+                                width=400, height=400,
                                 highlightAtoms=[highlight_idx] if highlight_idx is not None else []
                             )
-                            st.image(svg_prot, use_column_width='always')
+                            st.image(svg_prot, use_container_width=True)
                         else:
                             st.warning("Could not generate image for this protonated SMILES.")
 else:
